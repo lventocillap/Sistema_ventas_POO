@@ -9,7 +9,7 @@ require_once 'Inventory.php';
 require_once 'StockProduct.php';
 require_once 'SaleRecord.php';
 
-$product1 = new StockProduct(10, "Leche", "Gloria", 5, 6);
+$product1 = new StockProduct(10, "Agua", "Cielo", 1.5, 6);
 $product2 = new StockProduct(10, "Jamonada", "Zuiza", 6, 8);
 $product3 = new StockProduct(1, "Mantequilla", "Manty", 2.5, 8);
 
