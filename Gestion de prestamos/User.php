@@ -9,6 +9,11 @@ class User
     ) {
     }
 
+    public function getInfoCompleteUser(): string{
+        return "Su nombre es: ".$this->name."\n".
+        "Sun DNI es: ".$this->dni;
+    }
+
     public function getId(): int
     {
         return $this->id;
