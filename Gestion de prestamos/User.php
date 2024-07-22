@@ -9,14 +9,15 @@ class User
     ) {
     }
 
-    public function getInfoCompleteUser(): string{
-        return "Su nombre es: ".$this->name."\n".
-        "Sun DNI es: ".$this->dni;
+    public function getInfoCompleteUser(): string
+    {
+        return "Su nombre es: " . $this->name . "\n" .
+            "Sun DNI es: " . $this->dni;
     }
 
     public function getId(): int
     {
-        return $this->id;
+        return $this->id>0 ? $this->id : throw new Exception('Error id negativo');
     }
 
     public function getName(): string
@@ -24,7 +25,7 @@ class User
         return $this->name;
     }
 
-    public function getDni() : string 
+    public function getDni(): string
     {
         return $this->dni;
     }

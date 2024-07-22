@@ -2,13 +2,9 @@
 
 declare(strict_types=1);
 
-class LoanRecord
+class LoanRegistry
 {
     private array $loans;
-
-    public function __construct()
-    {
-    }
 
     public function addLoan($loan): void
     {
@@ -18,8 +14,12 @@ class LoanRecord
 
     public function listLoan(): void
     {
+
+
         $verification = null;
         foreach ($this->loans as $loan) {
+            $now = new DateTime();
+
             $User = $loan->getUser();
 
             if ($User !== $verification) {
@@ -29,13 +29,20 @@ class LoanRecord
                 $verification = $User;
             }
             echo $loan->getBook()->getInfoCompleteBook() . "\n";
+            echo "Fecha de devolución :" . $loan->getReturnDay() . "\n";
+            echo "---------------------------------------\n";
+            if ($loan->getReturnDay() > $now->format('Y-m-d')) {
+                echo "Tiene tiempo para devolver \n";
+            } else {
+                echo "Debe devolver el libro \n";
+            }
             echo "---------------------------------------\n";
         }
     }
     // public function listLoan():void
     // {
-    //     foreach($this->loans as tInfoCompleteU$loan){
-    //     echo $loan->getUser()->geser()."\n";
+    //     foreach($this->loans as $loan){
+    //     echo $loan->getUser()->getInfoCompleteUser()."\n";
     //     echo $loan->getBook()->getInfoCompleteBook()."\n";
     //     echo"---------------------------------------\n";
     //     }
@@ -44,9 +51,9 @@ class LoanRecord
     public function totalLoans(): string
     {
         $total = 0;
-        foreach ($this->loans as $loan){
-            $total ++;
+        foreach ($this->loans as $loan) {
+            $total++;
         }
-        return "El total de prestamos es : ".$total;
+        return "El total de prestamos es : " . $total;
     }
 }

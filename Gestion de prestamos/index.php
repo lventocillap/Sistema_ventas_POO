@@ -7,7 +7,7 @@ require_once 'Loan.php';
 require_once 'LoanRegistry.php';
 
 $library = new Library();
-$loanrecord = new LoanRecord();
+$loanRegistry = new LoanRegistry();
 
 $user1 = new User(1, "Luis", "12345678");
 $user2 = new User(2, "Pedro", "12345678");
@@ -24,20 +24,19 @@ $library->addBook($book2);
 $library->addBook($book3);
 $library->addBook($book4);
 
+$library->listBook() . "\n";
+echo "|||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n";
 
-// $library->listBook();
+$loan1 = new Loan($book1, $user1, '2024-05-12');
+$loan2 = new Loan($book2, $user2, '2024-07-24');
+$loan3 = new Loan($book3, $user2, '2024-11-13');
 
-$loan1 = new Loan($book1, $user1);
-$loan2 = new Loan($book2, $user2);
-$loan3 = new Loan($book3, $user2);
+$loanRegistry->addLoan($loan1);
+$loanRegistry->addLoan($loan2);
+$loanRegistry->addLoan($loan3);
 
-$loanrecord->addLoan($loan1);
-$loanrecord->addLoan($loan2);
-$loanrecord->addLoan($loan3);
-
-
-$loanrecord->listLoan()."\n";
-
-$library->listBook();
-
-echo $loanrecord->totalLoans();
+$loanRegistry->listLoan() . "\n";
+echo "|||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n";
+$library->listBook() . "\n";
+echo "|||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n";
+echo $loanRegistry->totalLoans();

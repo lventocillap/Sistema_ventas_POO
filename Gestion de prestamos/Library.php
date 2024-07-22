@@ -5,9 +5,6 @@ declare(strict_types=1);
 class Library
 {
     private array $books;
-    public function __construct()
-    {
-    }
 
     public function addBook(Book $book): void
     {
@@ -16,19 +13,18 @@ class Library
 
     public function listBook(): void
     {
-        echo"-------------LIBROS---------------\n";
+        echo "----------LIBROS DISPONIBLES------------\n";
         foreach ($this->books as $book) {
-            if(!$book->getLoan()){
-                echo $book->getInfoCompleteBook()."\n";
-                echo"---------------------------------\n";
+            if (!$book->getisLoan()) {
+                echo $book->getInfoCompleteBook() . "\n";
+                echo "---------------------------------\n";
             }
         }
-
-        echo"--------LIBROS PRESTADOS----------\n";
-        foreach ($this->books as $book){
-            if($book->getLoan()){
-                echo $book->getInfoCompleteBook()."\n";
-                echo"---------------------------------\n";
+        echo "--------LIBROS PRESTADOS----------\n";
+        foreach ($this->books as $book) {
+            if ($book->getisLoan()) {
+                echo $book->getInfoCompleteBook() . "\n";
+                echo "---------------------------------\n";
             }
         }
     }

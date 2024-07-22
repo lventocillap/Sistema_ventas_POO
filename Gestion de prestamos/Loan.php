@@ -7,6 +7,7 @@ class Loan
     public function __construct(
         private Book $book,
         private User $user,
+        private string $date,
     ) {
     }
 
@@ -18,5 +19,10 @@ class Loan
     public function getUser(): User
     {
         return $this->user;
+    }
+
+    public function getReturnDay(): string
+    {
+        return $this->date;
     }
 }
